@@ -6,6 +6,7 @@ import {
   Stack,
   Button,
   CardContent,
+  CardActionArea,
 } from '@mui/material';
 import { ContextUser } from '../App';
 import SelectedDays from '../components/SelectDays';
@@ -20,55 +21,55 @@ const ExercisesCards = () => {
       {searchedExercises.map((item) => (
         <Grid item key={item.name} xs={12} md={6} lg={4}>
           <Card elevation={3}>
-            {/* <CardActionArea onClick={() => console.log('dw')}> */}
-            <CardContent>
-              <SelectedDays />
-              <img
-                src={item.gifUrl}
-                alt={item.name}
-                style={{ height: '300px' }}
-              ></img>
-              <Stack direction="row" textAlign="center">
-                <Button
-                  sx={{
-                    ml: '21px',
-                    color: '#fff',
-                    background: '#FF934F',
-                    fontSize: '14px',
-                    borderRadius: '20px',
-                    textTransform: 'capitalize',
-                  }}
+            <CardActionArea onClick={() => console.log(item.name)}>
+              <CardContent>
+                <SelectedDays searchedExercises={item.name} />
+                <img
+                  src={item.gif}
+                  alt={item.name}
+                  style={{ height: '300px' }}
+                ></img>
+                <Stack direction="row" textAlign="center">
+                  <Button
+                    sx={{
+                      ml: '21px',
+                      color: '#fff',
+                      background: '#FF934F',
+                      fontSize: '14px',
+                      borderRadius: '20px',
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    {item.bodypart}
+                  </Button>
+                  <Button
+                    sx={{
+                      ml: '31px',
+                      color: '#fff',
+                      background: '#FF934F',
+                      fontSize: '14px',
+                      borderRadius: '20px',
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    {item.target}
+                  </Button>
+                </Stack>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  color="black"
+                  fontWeight="600"
+                  sx={{ fontSize: { lg: '20px', xs: '18px' } }}
+                  mt="20px"
+                  pb="10px"
+                  textTransform="capitalize"
+                  textAlign="center"
                 >
-                  {item.bodyPart}
-                </Button>
-                <Button
-                  sx={{
-                    ml: '31px',
-                    color: '#fff',
-                    background: '#FF934F',
-                    fontSize: '14px',
-                    borderRadius: '20px',
-                    textTransform: 'capitalize',
-                  }}
-                >
-                  {item.target}
-                </Button>
-              </Stack>
-              <Typography
-                gutterBottom
-                variant="h5"
-                color="black"
-                fontWeight="600"
-                sx={{ fontSize: { lg: '20px', xs: '18px' } }}
-                mt="20px"
-                pb="10px"
-                textTransform="capitalize"
-                textAlign="center"
-              >
-                {item.name}
-              </Typography>
-            </CardContent>
-            {/* </CardActionArea> */}
+                  {item.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
           </Card>
         </Grid>
       ))}

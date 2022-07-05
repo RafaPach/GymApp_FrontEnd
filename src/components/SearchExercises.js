@@ -10,16 +10,16 @@ const SearchExercises = () => {
   const { GetExercises, input, setInput } = useContext(ContextUser);
   let navigate = useNavigate();
 
-  useEffect(() => {
-    async function RollData() {
-      const bodyparts = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
-        options
-      );
-      setBodyParts(bodyparts);
-    }
-    RollData();
-  }, []);
+  // useEffect(() => {
+  //   async function RollData() {
+  //     const bodyparts = await fetchData(
+  //       'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+  //       options
+  //     );
+  //     setBodyParts(bodyparts);
+  //   }
+  //   RollData();
+  // }, []);
 
   return (
     <Stack mt="300px" alignItems="center" justifyContent="center" p="20px">
@@ -64,9 +64,7 @@ const SearchExercises = () => {
           Search
         </Button>
       </Box>
-      <Box>
-        <BodyPartsList data={bodyParts} />
-      </Box>
+      <Box>{/* <BodyPartsList data={bodyParts} /> */}</Box>
       <Button
         onClick={() => {
           navigate('/exercises', { replace: true });

@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 
-function SelectDays() {
+function SelectDays({ searchedExercises }) {
   const x = [
     'Monday',
     'Tuesday',
@@ -17,23 +17,25 @@ function SelectDays() {
     'Saturday',
     'Sunday',
   ];
-  const [dayChosen, setDayChosen] = useState({});
+  const initialContact = {
+    Monday: '',
+    Tuesday: '',
+    Wednesday: '',
+    Thursday: '',
+    Friday: '',
+  };
+  const [dayChosen, setDayChosen] = useState(initialContact);
+  const [dayChosen2, setDayChosen2] = useState('');
 
-  console.log(dayChosen);
-  //   const handleChangeFor = (propertyName) => (event) => {
-  //   setContact((contact) => ({
-  //     ...contact,
-  //     [propertyName]: event.target.value,
-  //   }));
-  //   // console.log(contact.name);
-  // };
-   const handleChangeFor = (propertyName) => (event) => {
-     setDayChosen((dayChosen) => ({
-       ...dayChosen,
-       [propertyName]: event.target.value,
-     }));
-     // console.log(dayChosen.name);
-   };
+  function test() {
+    if (dayChosen2 === 'Monday') {
+      setDayChosen({ ...dayChosen, Monday: `${searchedExercises}` });
+      console.log(dayChosen);
+    }
+  }
+
+  // const selected = [...MenuItem].filter((x) => x.selected).map((x) => x.value);
+  // console.log(selected);
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -41,10 +43,13 @@ function SelectDays() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={dayChosen}
+          value={dayChosen2}
           label="Age"
-          onChange={(e) => {
-            setDayChosen({day: e.target.value });
+          // onChange={(e) => {
+          //   setDayChosen(e.target.value);
+          // }}
+          onChange={(event) => {
+            setDayChosen2(event.target.value);
           }}
         >
           {x.map((x) => (
@@ -65,9 +70,7 @@ function SelectDays() {
           borderRadius: '20px',
           textTransform: 'capitalize',
         }}
-        onClick={() => {
-          console.log(dayChosen);
-        }}
+        onClick={test}
       >
         Add To List
       </Button>

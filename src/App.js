@@ -14,20 +14,21 @@ function App() {
 
   async function GetExercises() {
     if (input) {
-      const response = await fetchData(
-        'https://exercisedb.p.rapidapi.com/exercises',
-        options
-      );
-      const searchedExercises = response.filter(
+      const response = await fetch('http://localhost:5000/data');
+      const data = await response.json();
+      const searchedExercises = data.filter(
         (item) =>
-          item.name.toLowerCase().includes(input) ||
           item.target.toLowerCase().includes(input) ||
+          item.name.toLowerCase().includes(input) ||
           item.equipment.toLowerCase().includes(input) ||
-          item.bodyPart.toLowerCase().includes(input)
+          item.bodypart.toLowerCase().includes(input)
+        // item.name.toLowerCase().includes(input) ||
+        // item.target.toLowerCase().includes(input) ||
+        // item.equipment.toLowerCase().includes(input) ||
+        // item.bodyPart.toLowerCase().includes(input)
       );
       setSearchedExercises(searchedExercises);
     }
-    console.log(searchedExercises);
   }
 
   return (
