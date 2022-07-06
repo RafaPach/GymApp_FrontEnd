@@ -59,19 +59,15 @@ const SearchExercises = () => {
             right: { lg: '180px', xs: '150px' },
             fontSize: { lg: '16px', xs: '14px' },
           }}
-          onClick={GetExercises}
+          onClick={() => {
+            GetExercises();
+            navigate('/exercises', { replace: true });
+          }}
         >
           Search
         </Button>
       </Box>
       <Box>{/* <BodyPartsList data={bodyParts} /> */}</Box>
-      <Button
-        onClick={() => {
-          navigate('/exercises', { replace: true });
-        }}
-      >
-        DDDD
-      </Button>
     </Stack>
   );
 };

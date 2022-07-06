@@ -5,7 +5,7 @@ import {
   MenuItem,
   Button,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function SelectDays({ searchedExercises }) {
   const x = [
@@ -17,19 +17,21 @@ function SelectDays({ searchedExercises }) {
     'Saturday',
     'Sunday',
   ];
-  const initialContact = {
-    Monday: '',
-    Tuesday: '',
-    Wednesday: '',
-    Thursday: '',
-    Friday: '',
-  };
+  const initialContact = [
+    {
+      Monday: '',
+      Tuesday: '',
+      Wednesday: '',
+      Thursday: '',
+      Friday: '',
+    },
+  ];
   const [dayChosen, setDayChosen] = useState(initialContact);
   const [dayChosen2, setDayChosen2] = useState('');
 
   function test() {
     if (dayChosen2 === 'Monday') {
-      setDayChosen({ ...dayChosen, Monday: `${searchedExercises}` });
+      setDayChosen([{ ...dayChosen, Monday: `${searchedExercises}` }]);
       console.log(dayChosen);
     }
   }
@@ -45,9 +47,6 @@ function SelectDays({ searchedExercises }) {
           id="demo-simple-select"
           value={dayChosen2}
           label="Age"
-          // onChange={(e) => {
-          //   setDayChosen(e.target.value);
-          // }}
           onChange={(event) => {
             setDayChosen2(event.target.value);
           }}

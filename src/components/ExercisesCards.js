@@ -7,6 +7,7 @@ import {
   Button,
   CardContent,
   CardActionArea,
+  Box,
 } from '@mui/material';
 import { ContextUser } from '../App';
 import SelectedDays from '../components/SelectDays';
@@ -22,6 +23,7 @@ const ExercisesCards = () => {
         <Grid item key={item.name} xs={12} md={6} lg={4}>
           <Card elevation={3}>
             <CardActionArea onClick={() => console.log(item.name)}>
+              {/* MAKE THIS CARD ACTION ONLY BELLOW THE DROPDOWN SO THERE ARE NO WARINING */}
               <CardContent>
                 <SelectedDays searchedExercises={item.name} />
                 <img
@@ -29,8 +31,8 @@ const ExercisesCards = () => {
                   alt={item.name}
                   style={{ height: '300px' }}
                 ></img>
-                <Stack direction="row" textAlign="center">
-                  <Button
+                <Stack direction="row" textAlign="center" gap="30px">
+                  {/* <Button
                     sx={{
                       ml: '21px',
                       color: '#fff',
@@ -53,7 +55,36 @@ const ExercisesCards = () => {
                     }}
                   >
                     {item.target}
-                  </Button>
+                  </Button> */}
+                  <Typography
+                    sx={{
+                      // ml: '20px',
+                      color: '#fff',
+                      background: '#FF934F',
+                      fontSize: '15px',
+                      borderRadius: '20px',
+                      textTransform: 'capitalize',
+                      width: '85px',
+                      height: '25px',
+                      p: '4px 8px 4px 8px',
+                    }}
+                  >
+                    {item.bodypart}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: '#fff',
+                      background: '#FF934F',
+                      fontSize: '15px',
+                      borderRadius: '20px',
+                      textTransform: 'capitalize',
+                      width: '85px',
+                      height: '25px',
+                      p: '4px 8px 4px 8px',
+                    }}
+                  >
+                    {item.target}
+                  </Typography>
                 </Stack>
                 <Typography
                   gutterBottom
