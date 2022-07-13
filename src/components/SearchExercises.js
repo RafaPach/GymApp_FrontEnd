@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
-import { options, fetchData } from '../assets/fetchdata';
-import BodyPartsList from './BodyPartsList';
+// import BodyPartsList from './BodyPartsList';
 import { ContextUser } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 const SearchExercises = () => {
-  const [bodyParts, setBodyParts] = useState([]);
+  // const [bodyParts, setBodyParts] = useState([]);
   const { GetExercises, input, setInput } = useContext(ContextUser);
   let navigate = useNavigate();
 

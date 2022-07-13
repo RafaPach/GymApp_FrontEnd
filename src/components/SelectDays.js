@@ -26,14 +26,16 @@ function SelectDays({ searchedExercises }) {
       Friday: '',
     },
   ];
-  const [dayChosen, setDayChosen] = useState(initialContact);
+  const [dayChosen, setDayChosen] = useState([]);
   const [dayChosen2, setDayChosen2] = useState('');
 
+  const animals = [];
   function test() {
-    if (dayChosen2 === 'Monday') {
-      setDayChosen([{ ...dayChosen, Monday: `${searchedExercises}` }]);
-      console.log(dayChosen);
-    }
+    // if (dayChosen2 === 'Monday') {
+    //   setDayChosen([{ ...dayChosen, Monday: `${searchedExercises}` }]);
+    //   console.log(dayChosen);
+    // }
+    console.log(searchedExercises);
   }
 
   // const selected = [...MenuItem].filter((x) => x.selected).map((x) => x.value);

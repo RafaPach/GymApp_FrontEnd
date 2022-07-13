@@ -1,61 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Card,
   Typography,
   Grid,
   Stack,
-  Button,
   CardContent,
   CardActionArea,
-  Box,
+  Pagination,
 } from '@mui/material';
 import { ContextUser } from '../App';
 import SelectedDays from '../components/SelectDays';
-
 // these cards will have: image in the center, exercise name below and muscle targets and add button, when clicked dropdown with the days of the week
 
 const ExercisesCards = () => {
   const { searchedExercises } = useContext(ContextUser);
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastExercise = currentPage * 9;
+  const indexOfFirstExercise = indexOfLastExercise - 9;
+  const currentExercises = searchedExercises.slice(
+    indexOfFirstExercise,
+    indexOfLastExercise
+  );
 
+  function paginate(e, value) {
+    setCurrentPage(value);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  const [lift, setLift] = useState([]);
   return (
     <Grid container spacing={4}>
-      {searchedExercises.map((item) => (
+      {currentExercises.map((item) => (
         <Grid item key={item.name} xs={12} md={6} lg={4}>
           <Card elevation={3}>
-            <CardActionArea onClick={() => console.log(item.name)}>
+            <CardActionArea
+              onClick={() => {
+                const x = [...lift];
+                setLift([...x, item.name]);
+                console.log(lift);
+              }}
+            >
               {/* MAKE THIS CARD ACTION ONLY BELLOW THE DROPDOWN SO THERE ARE NO WARINING */}
               <CardContent>
-                <SelectedDays searchedExercises={item.name} />
+                <SelectedDays searchedExercises={lift} />
                 <img
                   src={item.gif}
                   alt={item.name}
                   style={{ height: '300px' }}
                 ></img>
                 <Stack direction="row" textAlign="center" gap="30px">
-                  {/* <Button
-                    sx={{
-                      ml: '21px',
-                      color: '#fff',
-                      background: '#FF934F',
-                      fontSize: '14px',
-                      borderRadius: '20px',
-                      textTransform: 'capitalize',
-                    }}
-                  >
-                    {item.bodypart}
-                  </Button>
-                  <Button
-                    sx={{
-                      ml: '31px',
-                      color: '#fff',
-                      background: '#FF934F',
-                      fontSize: '14px',
-                      borderRadius: '20px',
-                      textTransform: 'capitalize',
-                    }}
-                  >
-                    {item.target}
-                  </Button> */}
                   <Typography
                     sx={{
                       // ml: '20px',
@@ -104,6 +96,17 @@ const ExercisesCards = () => {
           </Card>
         </Grid>
       ))}
+      <Stack mt="100px" mb="20px" alignItems="center" sx={{ width: 1500 }}>
+        {searchedExercises.length > 9 && (
+          <Pagination
+            variant="outlined"
+            shape="rounded"
+            count={Math.ceil(searchedExercises.length / 9)}
+            page={currentPage}
+            onChange={paginate}
+          />
+        )}
+      </Stack>
     </Grid>
   );
 };

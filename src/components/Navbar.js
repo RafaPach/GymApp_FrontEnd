@@ -9,7 +9,7 @@ const Navbar = () => {
         to="/"
         style={{
           color: '#3A1212',
-          borderBottom: '2px solid #FF2625',
+          borderBottom: '2px solid #FB5607',
           margin: '0 20px',
           textDecoration: 'none',
         }}
@@ -22,10 +22,21 @@ const Navbar = () => {
           margin: '0 20px',
           color: '#3A1212',
           textDecoration: 'none',
-          borderBottom: '2px solid #FF2625',
+          borderBottom: '2px solid #FB5607',
         }}
       >
         Exercises
+      </Link>
+      <Link
+        to="/weeklyplan"
+        style={{
+          margin: '0 20px',
+          color: '#3A1212',
+          textDecoration: 'none',
+          borderBottom: '2px solid #FB5607',
+        }}
+      >
+        {`Weekly Plan`}
       </Link>
     </Stack>
   );
