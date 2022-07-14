@@ -5,9 +5,10 @@ import {
   MenuItem,
   Button,
 } from '@mui/material';
+import { getByTestId } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 
-function SelectDays({ searchedExercises }) {
+function SelectDays({ searchedExercises, test, setTest }) {
   const x = [
     'Monday',
     'Tuesday',
@@ -17,29 +18,37 @@ function SelectDays({ searchedExercises }) {
     'Saturday',
     'Sunday',
   ];
-  const initialContact = [
-    {
-      Monday: '',
-      Tuesday: '',
-      Wednesday: '',
-      Thursday: '',
-      Friday: '',
-    },
-  ];
-  const [dayChosen, setDayChosen] = useState([]);
+
   const [dayChosen2, setDayChosen2] = useState('');
 
-  const animals = [];
-  function test() {
-    // if (dayChosen2 === 'Monday') {
-    //   setDayChosen([{ ...dayChosen, Monday: `${searchedExercises}` }]);
-    //   console.log(dayChosen);
-    // }
-    console.log(searchedExercises);
+  function handleClick() {
+    setTest([
+      ...test,
+      { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
+    ]);
+    console.log(test[0].day);
   }
 
-  // const selected = [...MenuItem].filter((x) => x.selected).map((x) => x.value);
-  // console.log(selected);
+  async function Post() {
+    setTest([
+      ...test,
+      { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
+    ]);
+    try {
+      const data = await fetch('http://localhost:5000/data/plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          day: test[0].day,
+          exercise: test[0].exercise,
+        }),
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -71,7 +80,7 @@ function SelectDays({ searchedExercises }) {
           borderRadius: '20px',
           textTransform: 'capitalize',
         }}
-        onClick={test}
+        onClick={Post}
       >
         Add To List
       </Button>

@@ -27,6 +27,17 @@ const ExercisesCards = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   const [lift, setLift] = useState([]);
+  // const initialContact = {
+  //   Monday: '',
+  //   Tuesday: '',
+  //   Wednesday: '',
+  //   Thursday: '',
+  //   Friday: '',
+  // };
+  const initialContact = [];
+
+  const [test, setTest] = useState([]);
+
   return (
     <Grid container spacing={4}>
       {currentExercises.map((item) => (
@@ -34,14 +45,19 @@ const ExercisesCards = () => {
           <Card elevation={3}>
             <CardActionArea
               onClick={() => {
-                const x = [...lift];
-                setLift([...x, item.name]);
-                console.log(lift);
+                // const x = [...lift];
+                // setLift([...x, item.name]);
+                setLift([item.name]);
+                // console.log(lift);
               }}
             >
               {/* MAKE THIS CARD ACTION ONLY BELLOW THE DROPDOWN SO THERE ARE NO WARINING */}
               <CardContent>
-                <SelectedDays searchedExercises={lift} />
+                <SelectedDays
+                  searchedExercises={lift}
+                  test={test}
+                  setTest={setTest}
+                />
                 <img
                   src={item.gif}
                   alt={item.name}
