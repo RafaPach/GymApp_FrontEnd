@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { ContextUser } from '../App';
 import SelectedDays from '../components/SelectDays';
-// these cards will have: image in the center, exercise name below and muscle targets and add button, when clicked dropdown with the days of the week
 
 const ExercisesCards = () => {
   const { searchedExercises, show } = useContext(ContextUser);
@@ -23,34 +22,21 @@ const ExercisesCards = () => {
     indexOfLastExercise
   );
 
-  function paginate(e, value) {
+  function paginate(value) {
     setCurrentPage(value);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  const [lift, setLift] = useState([]);
-  const [test, setTest] = useState([]);
 
   return (
     <Grid container spacing={4}>
-      {show ? (
+      {show && searchedExercises.length > 0 ? (
         currentExercises.map((item) => (
           <Grid item key={item.name} xs={12} md={6} lg={4}>
             <Card elevation={3}>
-              <CardActionArea
-                onClick={() => {
-                  // const x = [...lift];
-                  // setLift([...x, item.name]);
-                  setLift([item.name]);
-                  // console.log(lift);
-                }}
-              >
+              <CardActionArea>
                 {/* MAKE THIS CARD ACTION ONLY BELLOW THE DROPDOWN SO THERE ARE NO WARINING */}
                 <CardContent>
-                  <SelectedDays
-                    searchedExercises={lift}
-                    test={test}
-                    setTest={setTest}
-                  />
+                  <SelectedDays lift={item.name} />
                   <img
                     src={item.gif}
                     alt={item.name}
@@ -114,7 +100,8 @@ const ExercisesCards = () => {
           alignItems="center"
           justifyContent="center"
         >
-          Please Search For Exercises in Home Page.
+          Please Search For Exercises in Home Page Or Select an Existing Muscle
+          Group.
         </Box>
       )}
       <Stack mt="100px" mb="20px" alignItems="center" sx={{ width: 1500 }}>

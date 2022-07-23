@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 
-function SelectDays({ searchedExercises, test, setTest }) {
+function SelectDays({ test, setTest, lift }) {
   const x = [
     'Monday',
     'Tuesday',
@@ -27,20 +27,17 @@ function SelectDays({ searchedExercises, test, setTest }) {
   //   ]);
   //   console.log(test[0].day);
   // }
-
   async function Post() {
-    setTest([
-      ...test,
-      { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
-    ]);
-    console.log(test);
+    const tmpArray = [];
     try {
+      tmpArray.push(...tmpArray, { day: `${dayChosen2}`, exercise: `${lift}` });
+      console.log(tmpArray);
       const data = await fetch('http://localhost:5000/data/plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          day: test[0].day,
-          exercise: test[0].exercise,
+          day: tmpArray[0].day,
+          exercise: tmpArray[0].exercise,
         }),
       });
       console.log(data);
@@ -48,7 +45,6 @@ function SelectDays({ searchedExercises, test, setTest }) {
       console.error(error.message);
     }
   }
-
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>

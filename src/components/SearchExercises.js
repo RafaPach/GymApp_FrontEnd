@@ -35,10 +35,9 @@ const SearchExercises = () => {
         <TextField
           height="70px"
           sx={{
-            input: { fontWeight: '600', border: 'none', borderRadius: '4px ' },
+            input: { fontWeight: '600', border: 'none', borderRadius: '4px' },
             width: { lg: '1100px', xs: '350px' },
             backgroundColor: '#fff',
-            borderRadius: '40px',
           }}
           value={input}
           onChange={(e) => {
@@ -60,13 +59,13 @@ const SearchExercises = () => {
           }}
           onClick={() => {
             GetExercises();
+            setInput('');
             navigate('/exercises', { replace: true });
           }}
         >
           Search
         </Button>
       </Box>
-      <Box>{/* <BodyPartsList data={bodyParts} /> */}</Box>
     </Stack>
   );
 };

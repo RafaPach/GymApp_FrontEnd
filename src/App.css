@@ -1,11 +1,10 @@
 .App {
   text-align: center;
-
 }
 
 .hero-banner-img {
   position: absolute;
-  right: 40px;
+  right: 20px;
   top: 100px;
   width: 550px;
   height: 750px;
