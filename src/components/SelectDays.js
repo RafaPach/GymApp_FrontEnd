@@ -5,8 +5,7 @@ import {
   MenuItem,
   Button,
 } from '@mui/material';
-import { getByTestId } from '@testing-library/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function SelectDays({ searchedExercises, test, setTest }) {
   const x = [
@@ -21,19 +20,20 @@ function SelectDays({ searchedExercises, test, setTest }) {
 
   const [dayChosen2, setDayChosen2] = useState('');
 
-  function handleClick() {
-    setTest([
-      ...test,
-      { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
-    ]);
-    console.log(test[0].day);
-  }
+  // function handleClick() {
+  //   setTest([
+  //     ...test,
+  //     { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
+  //   ]);
+  //   console.log(test[0].day);
+  // }
 
   async function Post() {
     setTest([
       ...test,
       { day: `${dayChosen2}`, exercise: `${searchedExercises}` },
     ]);
+    console.log(test);
     try {
       const data = await fetch('http://localhost:5000/data/plan', {
         method: 'POST',
