@@ -11,6 +11,7 @@ export const ContextUser = createContext('');
 
 function App() {
   const [searchedExercises, setSearchedExercises] = useState([]);
+  const [show, setShow] = useState(false);
   const [input, setInput] = useState('');
 
   async function GetExercises() {
@@ -25,6 +26,7 @@ function App() {
           item.bodypart.toLowerCase().includes(input)
       );
       setSearchedExercises(searchedExercises);
+      setShow(true);
     }
   }
   const alanKey =
@@ -45,7 +47,7 @@ function App() {
     <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
       <Navbar />
       <ContextUser.Provider
-        value={{ searchedExercises, setInput, input, GetExercises }}
+        value={{ searchedExercises, setInput, input, GetExercises, show }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
