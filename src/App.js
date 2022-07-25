@@ -29,12 +29,12 @@ function App() {
       setShow(true);
     }
   }
-  const alanKey =
-    'd6f408e565a4aec4d11e746885994fcf2e956eca572e1d8b807a3e2338fdd0dc/stage';
+  // const alanKey =
+  //   'd6f408e565a4aec4d11e746885994fcf2e956eca572e1d8b807a3e2338fdd0dc/stage';
 
   useEffect(() => {
     alanBtn({
-      key: alanKey,
+      key: process.env.alanKey,
       onCommand: ({ command, payload }) => {
         if (command === 'testCommand') {
           console.log(payload);

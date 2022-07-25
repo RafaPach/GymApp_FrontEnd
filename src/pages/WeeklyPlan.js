@@ -12,7 +12,6 @@ export default function WeeklyPlan() {
   const [weekdata, setWeekData] = useState('');
   const [show, setShow] = useState(false);
   const [testy, setTesty] = useState();
-  // const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,20 +95,6 @@ export default function WeeklyPlan() {
           }}
         >
           DELETE
-        </Button>
-        <Button
-          // onClick={() => {
-          //   TruncateData();
-          // }}
-          sx={{
-            bgcolor: '#FF934F',
-            color: '#fff',
-            width: { lg: '175px', xs: '80px' },
-            height: '56px',
-            fontSize: { lg: '16px', xs: '14px' },
-          }}
-        >
-          CLEAR TABLE
         </Button>
       </Box>
     </div>
