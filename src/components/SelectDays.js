@@ -59,7 +59,7 @@ function SelectDays({ test, setTest, lift }) {
   }
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 1, width: { lg: 290, sm: 230, xs: 200 } }}>
         <InputLabel id="demo-simple-select-label">Days</InputLabel>
         <Select
           labelId="demo-simple-select-label"

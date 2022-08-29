@@ -3,9 +3,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button } from '@mui/material';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 500 },
-  { field: 'day', headerName: 'Day', width: 410 },
-  { field: 'exercise', headerName: 'Exercise', width: 526 },
+  { field: 'id', headerName: 'ID', width: 400 },
+  { field: 'day', headerName: 'Day', width: 310 },
+  { field: 'exercise', headerName: 'Exercise', width: 426 },
 ];
 
 export default function WeeklyPlan() {
@@ -50,11 +50,14 @@ export default function WeeklyPlan() {
     );
   }
   return (
-    <div
-      style={{
-        height: 600,
-        width: '100%',
+    <Box
+      sx={{
+        // height: { lg: 600, md: 400, sm: 300, xs: 600 },
+        height: 670,
+        width: { lg: '1210px', md: '900px', sm: '700px', xs: '400px' },
         wordWrap: 'break-word',
+        ml: { lg: '100px' },
+        mt: { lg: '40px' },
       }}
     >
       {show && (
@@ -69,14 +72,13 @@ export default function WeeklyPlan() {
           checkboxSelection
           onCellClick={(e) => {
             setTesty(e.id);
-            console.log(e.id);
           }}
           fontSize="100px"
         />
       )}
       <Box
         display="flex"
-        width={1486}
+        sx={{ width: { lg: 1486 } }}
         height={80}
         alignItems="center"
         justifyContent="center"
@@ -97,6 +99,6 @@ export default function WeeklyPlan() {
           DELETE
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 }

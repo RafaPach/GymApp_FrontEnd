@@ -46,7 +46,6 @@ const ExercisesCards = () => {
                   <Stack direction="row" textAlign="center" gap="30px">
                     <Typography
                       sx={{
-                        // ml: '20px',
                         color: '#fff',
                         background: '#FF934F',
                         fontSize: '15px',
@@ -94,12 +93,17 @@ const ExercisesCards = () => {
         ))
       ) : (
         <Box
-          sx={{ mt: 25, fontSize: '25px' }}
+          sx={{
+            mt: 25,
+            fontSize: { lg: '25px', md: '22px', sx: '18px' },
+            width: { lg: 1486, md: '100vh', xs: '100vh' },
+          }}
           display="flex"
-          width={1486}
           height={80}
           alignItems="center"
           justifyContent="center"
+          ml="50px"
+          textAlign="center"
         >
           Please Search For Exercises in Home Page Or Select an Existing Muscle
           Group.

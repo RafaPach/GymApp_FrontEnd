@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
+    <Box width="400px" sx={{ width: { xl: '1488px' }, m: { lg: 'auto' } }}>
       <Navbar />
       <ContextUser.Provider
         value={{ searchedExercises, setInput, input, GetExercises, show }}

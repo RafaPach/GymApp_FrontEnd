@@ -3,10 +3,32 @@
 }
 
 .hero-banner-img {
-  position: absolute;
-  right: 20px;
-  top: 100px;
+  width: 450px;
+  height: 350px;
+}
+
+@media screen and (max-width: 962px) {
+  .hero-banner-img {
+    width: 400px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 676px) {
+  .hero-banner-img {
+    width: 350px;
+    height: 250px;
+  }
+}
+
+.sec-hero-banner-img {
   width: 550px;
-  height: 750px;
-  margin-top: -330px;
+  height: 210px;
+  /* layout: fill; */
+  object-fit: contain;
+}
+@media screen and (max-width: 581px) {
+  .sec-hero-banner-img {
+    width: 380px;
+    height: 180px;
+  }
 }
