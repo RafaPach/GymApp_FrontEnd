@@ -22,8 +22,9 @@ const ExercisesCards = () => {
     indexOfLastExercise
   );
 
-  function paginate(value) {
+  function paginate(e, value) {
     setCurrentPage(value);
+    console.log(value);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -78,7 +79,7 @@ const ExercisesCards = () => {
                     variant="h5"
                     color="black"
                     fontWeight="600"
-                    sx={{ fontSize: { lg: '20px', xs: '18px' } }}
+                    sx={{ fontSize: { lg: '18px', xs: '18px' } }}
                     mt="20px"
                     pb="10px"
                     textTransform="capitalize"

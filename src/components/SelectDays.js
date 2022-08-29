@@ -4,6 +4,8 @@ import {
   Select,
   MenuItem,
   Button,
+  Dialog,
+  Alert,
 } from '@mui/material';
 import React, { useState } from 'react';
 
@@ -19,6 +21,12 @@ function SelectDays({ test, setTest, lift }) {
   ];
 
   const [dayChosen2, setDayChosen2] = useState('');
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  function handleClose() {
+    setOpen(!open);
+  }
 
   async function Post() {
     const tmpArray = [];
@@ -38,7 +46,13 @@ function SelectDays({ test, setTest, lift }) {
           }),
         });
         console.log(data);
-      } else alert('Please Select A Day');
+        setSuccess(true);
+        setOpen(true);
+      } else {
+        // alert('Please Select A Day');
+        setSuccess(false);
+        setOpen(true);
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -78,6 +92,15 @@ function SelectDays({ test, setTest, lift }) {
       >
         Add To List
       </Button>
+      <Dialog open={open} onClose={handleClose}>
+        {success ? (
+          <Alert onClose={handleClose}>Your exercise has been submitted!</Alert>
+        ) : (
+          <Alert severity="error" onClose={handleClose}>
+            Please Select a Day!
+          </Alert>
+        )}
+      </Dialog>
     </div>
   );
 }

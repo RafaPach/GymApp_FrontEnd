@@ -5,8 +5,7 @@ import Exercises from './pages/Exercises';
 import WeeklyPlan from './pages/WeeklyPlan';
 import Navbar from './components/Navbar';
 import { Box } from '@mui/material';
-import { createContext, useEffect, useState } from 'react';
-import alanBtn from '@alan-ai/alan-sdk-web';
+import { createContext, useState } from 'react';
 export const ContextUser = createContext('');
 
 function App() {
@@ -29,19 +28,6 @@ function App() {
       setShow(true);
     }
   }
-  // const alanKey =
-  //   'd6f408e565a4aec4d11e746885994fcf2e956eca572e1d8b807a3e2338fdd0dc/stage';
-
-  useEffect(() => {
-    alanBtn({
-      key: process.env.alanKey,
-      onCommand: ({ command, payload }) => {
-        if (command === 'testCommand') {
-          console.log(payload);
-        }
-      },
-    });
-  }, []);
 
   return (
     <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
