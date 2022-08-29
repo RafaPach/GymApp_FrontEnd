@@ -9,7 +9,7 @@ It is also built with an in-app voice AI assistant that enables users to interac
 2. In the project directory, run `npm i` to make sure all packages are installed.
 3. Use `npm start` to spin up the project
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Follow [https://rafapach-gymapp.netlify.app/](http://localhost:3000) to view the deployed app.
 
 ### User's Journey
 
