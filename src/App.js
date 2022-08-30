@@ -15,7 +15,7 @@ function App() {
 
   async function GetExercises() {
     if (input) {
-      const response = await fetch('http://localhost:5000/data');
+      const response = await fetch('https://gymappbackend.herokuapp.com/data');
       const data = await response.json();
       const searchedExercises = data.filter(
         (item) =>

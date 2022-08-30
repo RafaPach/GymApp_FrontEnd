@@ -15,7 +15,10 @@ export default function WeeklyPlan() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let response = await fetch('http://localhost:5000/data/plan');
+      // let response = await fetch('http://localhost:5000/data/plan');
+      let response = await fetch(
+        'https://gymappbackend.herokuapp.com/data/plan'
+      );
       let data = await response.json();
       setShow(true);
       setWeekData(data.data);
@@ -25,10 +28,13 @@ export default function WeeklyPlan() {
 
   async function DeleteData(id) {
     try {
-      const data = await fetch(`http://localhost:5000/data/plan/${id}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const data = await fetch(
+        `https://gymappbackend.herokuapp.com/data/plan/${id}`,
+        {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
       console.log(data);
     } catch (error) {
       console.error(error.message);

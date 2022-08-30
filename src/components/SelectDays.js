@@ -37,14 +37,17 @@ function SelectDays({ test, setTest, lift }) {
           exercise: `${lift}`,
         });
         console.log(tmpArray);
-        const data = await fetch('http://localhost:5000/data/plan', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            day: tmpArray[0].day,
-            exercise: tmpArray[0].exercise,
-          }),
-        });
+        const data = await fetch(
+          'https://gymappbackend.herokuapp.com/data/plan',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              day: tmpArray[0].day,
+              exercise: tmpArray[0].exercise,
+            }),
+          }
+        );
         console.log(data);
         setSuccess(true);
         setOpen(true);
