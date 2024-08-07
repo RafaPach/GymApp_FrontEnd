@@ -9,6 +9,8 @@ This is a app that allows users to create their own weekly workout plan.
 3. Use `npm start` to spin up the project
 
 Follow [the link](https://rafapach-gymapp.netlify.app/) to view the deployed app.
+Follow [the link](https://github.com/RafaPach/GymApp_Backend) to view the BackEnd Repo.
+
 
 ### User's Journey
 
